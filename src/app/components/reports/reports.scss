@@ -1,0 +1,27 @@
+.chart-placeholder {
+    height: 300px;
+    width: 100%;
+
+    &.circle {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.bg-primary {
+    background-color: #3b82f6 !important;
+}
+
+.bg-success {
+    background-color: #10b981 !important;
+}
+
+.bg-warning {
+    background-color: #f59e0b !important;
+}

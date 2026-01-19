@@ -1,0 +1,71 @@
+.summary-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+
+    &.bg-primary {
+        background-color: #3b82f6 !important;
+    }
+
+    &.bg-success {
+        background-color: #10b981 !important;
+    }
+
+    &.bg-warning {
+        background-color: #f59e0b !important;
+    }
+
+    &.bg-info {
+        background-color: #0ea5e9 !important;
+    }
+
+    &.bg-danger {
+        background-color: #ef4444 !important;
+    }
+}
+
+.activity-feed {
+    .activity-item {
+        &:last-child .marker-line {
+            display: none;
+        }
+    }
+}
+
+.activity-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+
+    .marker-icon {
+        width: 32px;
+        height: 32px;
+        background-color: #fff;
+        border: 2px solid #f1f5f9;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #64748b;
+        font-size: 0.8rem;
+        z-index: 1;
+    }
+
+    .marker-line {
+        flex-grow: 1;
+        width: 2px;
+        background-color: #f1f5f9;
+        margin-top: 5px;
+        margin-bottom: -5px;
+    }
+}
+
+.extra-small {
+    font-size: 0.7rem;
+}

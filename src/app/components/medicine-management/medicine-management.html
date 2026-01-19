@@ -1,0 +1,149 @@
+<div class="medicine-management">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold mb-0">Medicine Management</h3>
+        <button class="btn btn-gradient px-4 py-2" (click)="addMedicine()">
+            <i class="fa-solid fa-plus me-2"></i>
+            Add Medicine
+        </button>
+    </div>
+
+    <div class="card shadow-sm border-0 p-4">
+        <div class="search-bar mb-4">
+            <div class="input-group">
+                <span class="input-group-text bg-light border-0">
+                    <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                </span>
+                <input type="text" class="form-control bg-light border-0 shadow-none ps-0"
+                    placeholder="Search by name, category, or batch number..." [(ngModel)]="searchTerm">
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="bg-light">
+                    <tr>
+                        <th class="border-0 text-muted small py-3">MEDICINE NAME</th>
+                        <th class="border-0 text-muted small py-3">CATEGORY</th>
+                        <th class="border-0 text-muted small py-3">BATCH NUMBER</th>
+                        <th class="border-0 text-muted small py-3">EXPIRY DATE</th>
+                        <th class="border-0 text-muted small py-3">QUANTITY</th>
+                        <th class="border-0 text-muted small py-3">SUPPLIER</th>
+                        <th class="border-0 text-muted small py-3">STATUS</th>
+                        <th class="border-0 text-muted small py-3">ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let m of medicines">
+                        <td class="py-3">
+                            <div class="fw-bold">{{ m.name }}</div>
+                            <div class="text-muted small">${{ m.price.toFixed(2) }}</div>
+                        </td>
+                        <td>
+                            <span class="badge-cat" [class]="m.category.toLowerCase()">{{ m.category }}</span>
+                        </td>
+                        <td><code>{{ m.batch }}</code></td>
+                        <td>{{ m.expiry }}</td>
+                        <td>
+                            <div class="fw-semibold">{{ m.quantity }} units</div>
+                            <div class="text-muted extra-small">Min: {{ m.min }}</div>
+                        </td>
+                        <td>{{ m.supplier }}</td>
+                        <td>
+                            <span class="badge d-flex align-items-center gap-1 w-fit" [ngClass]="{
+                                'badge-danger': m.status === 'Expired',
+                                'badge-warning': m.status === 'Expiring Soon',
+                                'badge-success': m.status === 'In Stock'
+                            }">
+                                <i
+                                    [class]="m.status === 'Expired' ? 'fa-regular fa-circle-xmark' : (m.status === 'In Stock' ? 'fa-regular fa-circle-check' : 'fa-solid fa-triangle-exclamation')"></i>
+                                {{ m.status }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <button class="btn-action edit" (click)="editMedicine(m)" title="Edit">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </button>
+                                <button class="btn-action delete" (click)="deleteMedicine(m)" title="Delete">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal for Add/Edit Medicine -->
+    <app-modal [title]="isEdit ? 'Edit Medicine' : 'Add New Medicine'" [show]="showModal" [size]="'lg'"
+        (close)="showModal = false">
+        <form (ngSubmit)="saveMedicine()">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Medicine Name</label>
+                    <input type="text" class="form-control shadow-none border" [(ngModel)]="currentMedicine.name"
+                        name="name" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Category</label>
+                    <select class="form-select shadow-none border" [(ngModel)]="currentMedicine.category"
+                        name="category">
+                        <option>Tablet</option>
+                        <option>Capsule</option>
+                        <option>Syrup</option>
+                        <option>Injection</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Batch Number</label>
+                    <input type="text" class="form-control shadow-none border" [(ngModel)]="currentMedicine.batch"
+                        name="batch" [disabled]="isEdit" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Price ($)</label>
+                    <input type="number" step="0.01" class="form-control shadow-none border"
+                        [(ngModel)]="currentMedicine.price" name="price" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Expiry Date</label>
+                    <input type="date" class="form-control shadow-none border" [(ngModel)]="currentMedicine.expiry"
+                        name="expiry" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Initial Stock</label>
+                    <input type="number" class="form-control shadow-none border" [(ngModel)]="currentMedicine.quantity"
+                        name="quantity" required>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label small fw-bold text-muted text-uppercase">Supplier</label>
+                    <input type="text" class="form-control shadow-none border" [(ngModel)]="currentMedicine.supplier"
+                        name="supplier" required>
+                </div>
+            </div>
+            <div class="mt-4 pt-3 border-top d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-light px-4" (click)="showModal = false">Cancel</button>
+                <button type="submit" class="btn btn-primary px-4 shadow-sm border-0">
+                    {{ isEdit ? 'Update Medicine' : 'Add Medicine' }}
+                </button>
+            </div>
+        </form>
+    </app-modal>
+
+    <!-- Confirmation Modal for Delete -->
+    <app-modal title="Confirm Deletion" [show]="showDeleteModal" [size]="'sm'" (close)="cancelDelete()">
+        <div class="text-center p-3">
+            <div class="mb-4">
+                <i class="fa-solid fa-triangle-exclamation text-warning display-4"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Are you sure?</h5>
+            <p class="text-muted mb-4">You are about to delete <strong>{{ medicineToDelete?.name }}</strong>. This
+                action
+                cannot be undone.</p>
+            <div class="d-flex justify-content-center gap-2">
+                <button class="btn btn-light px-4" (click)="cancelDelete()">Cancel</button>
+                <button class="btn btn-danger px-4" (click)="confirmDelete()">Delete Medicine</button>
+            </div>
+        </div>
+    </app-modal>
+</div>

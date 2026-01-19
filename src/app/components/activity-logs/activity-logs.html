@@ -1,0 +1,43 @@
+<div class="activity-logs">
+    <div class="mb-4">
+        <h3 class="fw-bold mb-1">Activity Logs</h3>
+        <p class="text-muted">Monitor all system activities and user actions.</p>
+    </div>
+
+    <div class="row g-3 mb-5">
+        <div *ngFor="let card of summaryCards" class="col text-center">
+            <div class="card shadow-sm border-0 p-3">
+                <div class="summary-icon mb-2 mx-auto" [ngClass]="'bg-' + card.color">
+                    <i class="fa-solid" [class]="card.icon"></i>
+                </div>
+                <h5 class="fw-bold mb-0">{{ card.count }}</h5>
+                <span class="text-muted extra-small fw-bold text-uppercase">{{ card.label }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0 p-4">
+        <h5 class="fw-bold mb-4">Recent Activity</h5>
+        <div class="activity-feed">
+            <div *ngFor="let log of logs" class="activity-item d-flex gap-3 mb-4">
+                <div class="activity-marker">
+                    <div class="marker-icon shadow-sm">
+                        <i class="fa-solid" [class]="log.icon"></i>
+                    </div>
+                    <div class="marker-line"></div>
+                </div>
+                <div class="activity-content flex-grow-1">
+                    <div class="d-flex justify-content-between align-items-start mb-1">
+                        <h6 class="fw-bold mb-0">{{ log.action }}</h6>
+                        <span class="text-muted small">{{ log.time }}</span>
+                    </div>
+                    <p class="text-muted small mb-1">{{ log.details }}</p>
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="extra-small fw-bold text-primary">{{ log.user }}</span>
+                        <span class="text-muted extra-small">{{ log.fullDate }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

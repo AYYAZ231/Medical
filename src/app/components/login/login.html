@@ -1,0 +1,66 @@
+<div class="login-container">
+    <div class="login-card shadow-lg">
+        <div class="text-center mb-4">
+            <div class="logo-box mx-auto mb-3">
+                <i class="fa-solid fa-waveform"></i>
+            </div>
+            <h1 class="login-title mb-1">Medical Store</h1>
+            <p class="login-subtitle">Inventory Management System</p>
+        </div>
+
+        <form (ngSubmit)="onLogin()">
+            <!-- Username -->
+            <div class="mb-4">
+                <label class="form-label custom-label">Username</label>
+                <div class="custom-input-group">
+                    <i class="fa-regular fa-user input-icon"></i>
+                    <input type="text" class="form-control" placeholder="Enter username" name="username"
+                        [(ngModel)]="username">
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+                <label class="form-label custom-label">Password</label>
+                <div class="custom-input-group">
+                    <i class="fa-solid fa-lock input-icon"></i>
+                    <input type="password" class="form-control" placeholder="Enter password" name="password"
+                        [(ngModel)]="password">
+                </div>
+            </div>
+
+            <!-- Role Selection -->
+            <div class="mb-4">
+                <label class="form-label custom-label d-block">Select Role</label>
+                <div class="row gx-3 mt-3">
+                    <div class="col-6">
+                        <div class="role-option" [class.active]="selectedRole === 'admin'"
+                            (click)="selectRole('admin')">
+                            <div class="role-title">Admin</div>
+                            <div class="role-subtitle">Full Access</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="role-option" [class.active]="selectedRole === 'cashier'"
+                            (click)="selectRole('cashier')">
+                            <div class="role-title">Cashier</div>
+                            <div class="role-subtitle">Sales Only</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div *ngIf="errorMessage" class="alert alert-danger py-2 small mb-3 border-0 text-center"
+                style="background-color: oklch(0.95 0.05 20); color: oklch(0.4 0.1 20); border-radius: 8px;">
+                {{ errorMessage }}
+            </div>
+
+            <button type="submit" class="btn btn-login w-100 border-0">Login</button>
+
+            <div class="text-center mt-5 small text-muted demo-creds">
+                Use <b>admin</b> / <b>123</b> to login
+            </div>
+        </form>
+    </div>
+</div>

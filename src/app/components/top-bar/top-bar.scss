@@ -1,0 +1,102 @@
+.top-bar {
+    background: white;
+    border-bottom: 1px solid oklch(0.928 0.006 264.531);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    padding: 1.25rem 1.5rem !important;
+
+    @media (min-width: 992px) {
+        padding: 1.5rem 2rem !important;
+    }
+}
+
+.menu-toggle-btn {
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    color: oklch(0.278 0.033 256.848);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: oklch(0.967 0.003 264.542);
+    border: 1px solid oklch(0.928 0.006 264.531);
+}
+
+.welcome-text {
+    color: oklch(0.278 0.033 256.848);
+    font-size: 1.1rem;
+
+    @media (min-width: 768px) {
+        font-size: 1.25rem;
+    }
+}
+
+.date-text {
+    color: oklch(0.551 0.027 264.364);
+    font-size: 0.75rem;
+
+    @media (min-width: 768px) {
+        font-size: 0.875rem;
+    }
+}
+
+.status-indicator {
+    background-color: oklch(0.962 0.035 159.957);
+    border-radius: 10px;
+}
+
+.user-profile {
+    background-color: oklch(0.967 0.003 264.542);
+    border-radius: 10px;
+    padding: 0.4rem 0.5rem !important;
+
+    @media (min-width: 768px) {
+        padding: 0.5rem 1rem !important;
+    }
+}
+
+.user-avatar-bg {
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: oklch(0.441 0.027 264.364);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.profile-name {
+    color: oklch(0.278 0.033 256.848);
+}
+
+.profile-role {
+    color: oklch(0.551 0.027 264.364);
+}
+
+.logout-btn {
+    border: 1px solid oklch(0.922 0.039 15.333);
+    color: oklch(0.627 0.194 14.925);
+    background: oklch(0.982 0.015 15.823);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    height: 38px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+        font-size: 0.9rem;
+        height: 44px;
+    }
+
+    &:hover {
+        background-color: oklch(0.627 0.194 14.925);
+        color: white;
+    }
+}

@@ -1,0 +1,104 @@
+<div class="sales-container">
+    <div class="row h-100 g-0">
+        <!-- Main Content (Search & Results) -->
+        <div class="col-lg-8 p-4 bg-light border-end overflow-auto h-100">
+            <div class="mb-4">
+                <h3 class="fw-bold mb-1">Sales</h3>
+                <p class="text-muted">Create a new sale transaction.</p>
+            </div>
+
+            <div class="search-box mb-4">
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-0 shadow-sm">
+                        <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                    </span>
+                    <input type="text" class="form-control border-0 shadow-sm ps-0" placeholder="Search medicines..."
+                        [(ngModel)]="searchTerm">
+                </div>
+            </div>
+
+            <div class="section-title mb-3">
+                <h6 class="fw-bold text-muted small text-uppercase">Available Medicines</h6>
+            </div>
+
+            <div class="row g-3">
+                <div *ngFor="let m of availableMedicines" class="col-md-6 col-xl-4">
+                    <div class="card medicine-card border-0 shadow-sm p-3 h-100" (click)="addToCart(m)">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge-cat" [class]="m.category.toLowerCase()">{{ m.category }}</span>
+                            <div class="fw-bold text-primary">${{ m.price.toFixed(2) }}</div>
+                        </div>
+                        <div class="fw-bold mb-1">{{ m.name }}</div>
+                        <div class="text-muted extra-small">In Stock: {{ m.stock }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Panel (Right Side) -->
+        <div class="col-lg-4 p-4 bg-white d-flex flex-column h-100 shadow-sm">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold mb-0">Cart Summary</h5>
+                <span class="badge bg-primary rounded-pill">{{ cart.length }} items</span>
+            </div>
+
+            <div class="cart-items flex-grow-1 overflow-auto mb-4">
+                <div *ngIf="cart.length === 0"
+                    class="h-100 d-flex flex-column align-items-center justify-content-center text-muted">
+                    <i class="fa-solid fa-cart-shopping fa-3x mb-3 opacity-25"></i>
+                    <p>Cart is empty</p>
+                </div>
+
+                <div *ngFor="let item of cart; let i = index"
+                    class="cart-item d-flex align-items-center justify-content-between p-3 border rounded mb-2">
+                    <div>
+                        <div class="fw-bold small">{{ item.name }}</div>
+                        <div class="text-muted extra-small">Qty: {{ item.quantity }} × ${{ item.price.toFixed(2) }}
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="fw-bold">${{ (item.price * item.quantity).toFixed(2) }}</div>
+                        <button class="btn btn-sm text-danger p-0" (click)="removeFromCart(i)">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-method mb-4">
+                <h6 class="fw-bold small mb-3">Payment Method</h6>
+                <div class="btn-group w-100" role="group">
+                    <input type="radio" class="btn-check" name="payment" id="cash" [(ngModel)]="paymentMethod"
+                        value="cash">
+                    <label class="btn btn-outline-primary" for="cash">
+                        <i class="fa-solid fa-money-bill-wave me-2"></i> Cash
+                    </label>
+                    <input type="radio" class="btn-check" name="payment" id="card" [(ngModel)]="paymentMethod"
+                        value="card">
+                    <label class="btn btn-outline-primary" for="card">
+                        <i class="fa-solid fa-credit-card me-2"></i> Card
+                    </label>
+                </div>
+            </div>
+
+            <div class="pricing-summary border-top pt-4">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted">Subtotal</span>
+                    <span class="fw-bold">${{ subtotal.toFixed(2) }}</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="text-muted">Discount</span>
+                    <span class="fw-bold">$0.00</span>
+                </div>
+                <div class="d-flex justify-content-between mt-3 mb-4">
+                    <h5 class="fw-bold">Total</h5>
+                    <h5 class="fw-bold text-primary">${{ total.toFixed(2) }}</h5>
+                </div>
+                <button class="btn btn-gradient w-100 py-3 fw-bold" [disabled]="cart.length === 0"
+                    (click)="generateBill()">
+                    Generate Bill
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

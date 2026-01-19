@@ -1,0 +1,216 @@
+.admin-title {
+    color: oklch(0.278 0.033 256.848);
+}
+
+.title-color {
+    color: oklch(0.278 0.033 256.848);
+}
+
+.stat-card {
+    min-height: 100px;
+    padding: 16px;
+    border-radius: 12px;
+    background: white;
+    border: 1px solid oklch(0.88 0.01 264.531);
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+
+    @media (min-width: 768px) {
+        min-height: 120px;
+        padding: 20px 24px;
+        gap: 20px;
+    }
+}
+
+.stat-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+
+    @media (min-width: 768px) {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+
+    &.blue-icon {
+        color: oklch(0.623 0.214 259.815);
+        border: 1px solid oklch(0.623 0.214 259.815 / 0.1);
+    }
+
+    &.green-icon {
+        color: oklch(0.723 0.219 149.579);
+        border: 1px solid oklch(0.723 0.219 149.579 / 0.1);
+    }
+
+    &.orange-icon {
+        color: #f59e0b;
+        border: 1px solid #f59e0b20;
+    }
+
+    &.yellow-icon {
+        color: #eab308;
+        border: 1px solid #eab30820;
+    }
+}
+
+.stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: oklch(0.551 0.027 264.364);
+    margin-bottom: 0px;
+
+    @media (min-width: 768px) {
+        font-size: 13px;
+    }
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: oklch(0.278 0.033 256.848);
+    line-height: 1.1;
+
+    @media (min-width: 768px) {
+        font-size: 1.75rem;
+    }
+}
+
+.list-card {
+    border-radius: 14px;
+    border: 1px solid oklch(0.88 0.01 264.531);
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 3px;
+}
+
+.list-item {
+    border-radius: 12px;
+
+    &.orange-tint {
+        background-color: #fffaf0;
+    }
+
+    &.red-tint {
+        background-color: #fff5f5;
+    }
+}
+
+.item-name {
+    color: oklch(0.278 0.033 256.848);
+}
+
+.badge-low-stock {
+    background-color: #fff2e6;
+    color: #f59e0b;
+    font-size: 11px;
+    padding: 6px 12px;
+}
+
+.badge-expired {
+    background-color: #ffeaea;
+    color: #ef4444;
+    font-size: 11px;
+    padding: 6px 12px;
+}
+
+.badge-low-stock,
+.badge-expired {
+    white-space: nowrap;
+}
+
+.action-card {
+    background: white;
+    padding: 16px 12px;
+    border-radius: 12px;
+    border: 1px solid oklch(0.88 0.01 264.531);
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 2px 4px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+
+    @media (min-width: 768px) {
+        padding: 28px 24px;
+        border-radius: 14px;
+    }
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        border-color: oklch(0.623 0.214 259.815 / 0.3);
+
+        .action-icon-square {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .action-text {
+            color: oklch(0.623 0.214 259.815);
+        }
+    }
+}
+
+.action-icon-square {
+    width: 48px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+
+    @media (min-width: 768px) {
+        width: 64px;
+        height: 42px;
+        border-radius: 10px;
+        font-size: 1.1rem;
+    }
+}
+
+.action-text {
+    font-size: 13px;
+    color: oklch(0.278 0.033 256.848);
+    transition: color 0.3s ease;
+
+    @media (min-width: 768px) {
+        font-size: 15px;
+    }
+}
+
+.cashier-item {
+    background-color: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid oklch(0.96 0.01 264.531 / 0.5);
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: #f1f5f9;
+        border-color: oklch(0.9 0.02 264.531);
+    }
+}
+
+.text-orange {
+    color: #f59e0b;
+}
+
+.text-red {
+    color: #ef4444;
+}
+
+.text-success {
+    color: #10b981 !important;
+}
+
+.action-label {
+    font-size: 16px;
+    font-weight: 400;
+    color: oklch(0.145 0 0);
+}

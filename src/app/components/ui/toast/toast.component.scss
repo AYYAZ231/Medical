@@ -1,0 +1,25 @@
+.toast {
+    min-width: 250px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border-radius: 0.75rem;
+
+    &.bg-success {
+        background-color: #10b981 !important;
+    }
+
+    &.bg-danger {
+        background-color: #ef4444 !important;
+    }
+
+    &.bg-warning {
+        background-color: #f59e0b !important;
+    }
+
+    &.bg-info {
+        background-color: #3b82f6 !important;
+    }
+}
+
+.btn-close {
+    font-size: 0.75rem;
+}

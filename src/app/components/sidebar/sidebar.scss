@@ -1,0 +1,169 @@
+.sidebar {
+    width: 260px;
+    background: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid oklch(0.928 0.006 264.531);
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+
+    @media (max-width: 991.98px) {
+        position: fixed;
+        left: -260px;
+        top: 0;
+
+        &.mobile-open {
+            left: 0;
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    &.collapsed {
+        width: 80px;
+        // ... (existing collapsed styles)
+    }
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &.show {
+        display: block;
+        opacity: 1;
+    }
+
+    @media (max-width: 991.98px) {
+        display: block;
+        pointer-events: none;
+
+        &.show {
+            pointer-events: auto;
+        }
+    }
+}
+
+.sidebar-header {
+    padding: 2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    min-height: 106px;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    color: oklch(0.441 0.027 264.364);
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: oklch(0.967 0.003 264.542);
+        color: oklch(0.623 0.214 259.815);
+    }
+}
+
+.logo-box {
+    width: 42px;
+    height: 42px;
+    background: oklch(0.623 0.214 259.815);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    flex-shrink: 0;
+}
+
+.brand-name {
+    font-size: 1.1rem;
+    color: oklch(0.278 0.033 256.848);
+}
+
+.brand-sub {
+    font-size: 0.75rem;
+    color: oklch(0.551 0.027 264.364);
+}
+
+.sidebar-menu {
+    padding: 0 1rem;
+    transition: padding 0.3s;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    color: oklch(0.441 0.027 264.364);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+        background-color: oklch(0.967 0.003 264.542);
+        color: oklch(0.278 0.033 256.848);
+    }
+
+    &.active {
+        background: linear-gradient(90deg, oklch(0.623 0.214 259.815) 0%, oklch(0.723 0.219 149.579) 100%);
+        color: white;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+
+        .icon-container {
+            color: white;
+        }
+    }
+}
+
+.icon-container {
+    font-size: 1.1rem;
+    width: 24px;
+    margin-right: 12px;
+    text-align: center;
+    color: oklch(0.623 0.214 259.815);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: margin 0.3s;
+}
+
+.admin-badge {
+    background-color: oklch(0.962 0.035 159.957);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    color: oklch(0.4 0.1 160);
+    transition: all 0.3s;
+}
+
+.admin-icon-bg {
+    width: 28px;
+    height: 28px;
+    background-color: oklch(0.85 0.1 160 / 0.2);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #f59e0b;
+    flex-shrink: 0;
+}

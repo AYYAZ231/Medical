@@ -1,0 +1,137 @@
+<div class="dashboard container-fluid py-2 px-2 px-md-3">
+    <!-- Summary Cards -->
+    <div class="row g-3 g-md-4 mb-4 mb-md-5">
+        <!-- Total Medicines -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card stat-card border-0">
+                <div class="stat-icon-wrapper blue-icon">
+                    <i class="fa-solid fa-pill"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-label text-truncate">Total Medicines</div>
+                    <div class="stat-value">8</div>
+                </div>
+            </div>
+        </div>
+        <!-- Today's Sales -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card stat-card border-0">
+                <div class="stat-icon-wrapper green-icon">
+                    <i class="fa-solid fa-dollar-sign"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-label text-truncate">Today's Sales</div>
+                    <div class="stat-value">$5.00</div>
+                </div>
+            </div>
+        </div>
+        <!-- Low Stock Alerts -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card stat-card border-0">
+                <div class="stat-icon-wrapper orange-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-label text-truncate">Low Stock Alerts</div>
+                    <div class="stat-value">2</div>
+                </div>
+            </div>
+        </div>
+        <!-- Expiring Soon -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="card stat-card border-0">
+                <div class="stat-icon-wrapper yellow-icon">
+                    <i class="fa-solid fa-calendar"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-label text-truncate">Expiring Soon</div>
+                    <div class="stat-value">1</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4 mb-4 mb-md-5">
+        <!-- Low Stock -->
+        <div class="col-12 col-xl-6">
+            <div class="card list-card border-0 p-3 p-md-4 h-100">
+                <div class="d-flex align-items-center mb-4">
+                    <i class="fa-solid fa-triangle-exclamation text-orange me-3"></i>
+                    <h5 class="mb-0 fw-bold title-color">Low Stock Medicines</h5>
+                </div>
+                <div class="list-container">
+                    <div *ngFor="let item of lowStockMedicines"
+                        class="list-item d-flex justify-content-between align-items-center p-3 mb-3 orange-tint">
+                        <div>
+                            <div class="item-name fw-bold">{{ item.name }}</div>
+                            <div class="text-secondary small">Stock: {{ item.stock }} units</div>
+                        </div>
+                        <span class="badge badge-low-stock">Low Stock</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expiring Soon -->
+        <div class="col-12 col-xl-6">
+            <div class="card list-card border-0 p-3 p-md-4 h-100">
+                <div class="d-flex align-items-center mb-4">
+                    <i class="fa-solid fa-calendar-days text-red me-3"></i>
+                    <h5 class="mb-0 fw-bold title-color">Expiring Medicines</h5>
+                </div>
+                <div class="list-container">
+                    <div *ngFor="let item of expiringMedicines"
+                        class="list-item d-flex justify-content-between align-items-center p-3 mb-3 red-tint">
+                        <div>
+                            <div class="item-name fw-bold">{{ item.name }}</div>
+                            <div class="text-secondary small">Expires: {{ item.expiry }}</div>
+                        </div>
+                        <span class="badge badge-expired">Expired</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Shortcuts -->
+    <div class="mb-5">
+        <h5 class="fw-bold mb-4 title-color">Quick Actions</h5>
+        <div class="row g-3 g-md-4">
+            <div *ngFor="let action of quickActions" class="col-6 col-md-3">
+                <div class="action-card border-0 d-flex flex-column align-items-center justify-content-center"
+                    [routerLink]="action.route">
+                    <div class="action-icon-square mb-3" [style.background-color]="action.bg">
+                        <i [class]="'fa-solid ' + action.icon"></i>
+                    </div>
+                    <div class="action-text fw-bold">{{ action.label }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cashier Performance Summary -->
+    <div class="mb-4">
+        <div class="card list-card border-0 p-3 p-md-4">
+            <div class="d-flex align-items-center mb-4">
+                <i class="fa-solid fa-users-viewfinder text-primary me-3"></i>
+                <h5 class="mb-0 fw-bold title-color">Cashier Performance Summary</h5>
+            </div>
+            <div class="list-container">
+                <div *ngFor="let cashier of cashiers"
+                    class="list-item d-flex flex-column flex-sm-row justify-content-between align-items-sm-center p-3 mb-3 cashier-item gap-3 gap-sm-0">
+                    <div>
+                        <div class="item-name fw-bold">{{ cashier.name }}</div>
+                        <div class="text-secondary small text-truncate">{{ cashier.shift }} • {{ cashier.salesCount }}
+                            Sales</div>
+                    </div>
+                    <div class="text-start text-sm-end">
+                        <div class="item-name fw-bold">{{ cashier.totalAmount }}</div>
+                        <div class="text-success small fw-bold">
+                            <i class="fa-solid fa-arrow-trend-up me-1"></i>{{ cashier.growth }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

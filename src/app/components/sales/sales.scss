@@ -1,0 +1,58 @@
+.sales-container {
+    height: calc(100vh - 80px);
+    /* Adjust based on top bar height */
+    overflow: hidden;
+}
+
+.medicine-card {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+
+    &:hover {
+        transform: translateY(-2px);
+        border-color: #3b82f6;
+    }
+}
+
+.cart-item {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+.pricing-summary {
+    background-color: #fff;
+}
+
+.btn-check:checked+.btn-outline-primary {
+    background-color: #3b82f6;
+    border-color: #3b82f6;
+    color: #fff;
+}
+
+.badge-cat {
+    padding: 0.15rem 0.6rem;
+    border-radius: 0.5rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+
+    &.tablet {
+        background-color: #ebf5ff;
+        color: #1e40af;
+    }
+
+    &.capsule {
+        background-color: #f0fdf4;
+        color: #166534;
+    }
+
+    &.syrup {
+        background-color: #f5f3ff;
+        color: #5b21b6;
+    }
+
+    &.injection {
+        background-color: #fef2f2;
+        color: #991b1b;
+    }
+}

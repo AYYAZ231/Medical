@@ -1,0 +1,41 @@
+<div class="sidebar-overlay" [class.show]="isMobileOpen" (click)="closeMobile()"></div>
+<div class="sidebar" [class.collapsed]="isCollapsed" [class.mobile-open]="isMobileOpen">
+    <div class="sidebar-header">
+        <div class="logo-box">
+            <i class="fa-solid fa-pill"></i>
+        </div>
+        <div class="brand-info ms-3" *ngIf="!isCollapsed">
+            <h6 class="mb-0 fw-bold brand-name text-truncate">MediStore</h6>
+            <span class="text-muted extra-small brand-sub">Inventory System</span>
+        </div>
+
+        <!-- Desktop Collapse Toggle -->
+        <button class="btn toggle-btn ms-auto d-none d-lg-flex" (click)="toggleSidebar()">
+            <i class="fa-solid" [class.fa-chevron-left]="!isCollapsed" [class.fa-chevron-right]="isCollapsed"></i>
+        </button>
+
+        <!-- Mobile Close Button -->
+        <button class="btn toggle-btn ms-auto d-flex d-lg-none" (click)="closeMobile()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <div class="sidebar-menu mt-4">
+        <div *ngFor="let item of menuItems" class="menu-item" [routerLink]="item.route" routerLinkActive="active"
+            [title]="isCollapsed ? item.label : ''">
+            <div class="icon-container">
+                <i [class]="item.icon"></i>
+            </div>
+            <span class="menu-label text-truncate" *ngIf="!isCollapsed">{{ item.label }}</span>
+        </div>
+    </div>
+
+    <div class="sidebar-footer p-3 mt-auto">
+        <div class="admin-badge d-flex align-items-center" [class.justify-content-center]="isCollapsed">
+            <div class="admin-icon-bg" [class.me-3]="!isCollapsed">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+            <div class="fw-bold small" *ngIf="!isCollapsed">Admin Access</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="reports-analytics">
+    <div class="d-flex justify-content-between align-items-end mb-4">
+        <div>
+            <h3 class="fw-bold mb-1">Reports & Analytics</h3>
+            <p class="text-muted mb-0">Track your business performance and insights.</p>
+        </div>
+        <button class="btn btn-gradient px-4" (click)="exportReport()">
+            <i class="fa-solid fa-file-export me-2"></i>
+            Export Report
+        </button>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div *ngFor="let s of stats" class="col-md-3">
+            <div class="card shadow-sm border-0 p-3 h-100">
+                <div class="text-muted small fw-bold text-uppercase mb-2">{{ s.label }}</div>
+                <div class="d-flex align-items-end gap-2">
+                    <h4 class="fw-bold mb-0">{{ s.value }}</h4>
+                    <span class="small" [ngClass]="s.isPositive ? 'text-success' : 'text-danger'">
+                        {{ s.trend }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 p-4 h-100">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold mb-0">Daily Sales Trend</h5>
+                    <select class="form-select form-select-sm border-0 bg-light w-auto shadow-none">
+                        <option>Last 7 Days</option>
+                        <option>Last 30 Days</option>
+                    </select>
+                </div>
+                <div class="chart-container" style="height: 300px; position: relative;">
+                    <canvas id="salesTrendChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0 p-4 h-100">
+                <h5 class="fw-bold mb-4">Sales by Category</h5>
+                <div class="chart-container" style="height: 300px; position: relative;">
+                    <canvas id="categoryPieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

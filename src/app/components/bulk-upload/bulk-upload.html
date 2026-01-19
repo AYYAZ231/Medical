@@ -1,0 +1,42 @@
+<div class="bulk-upload">
+    <div class="mb-4">
+        <h3 class="fw-bold mb-1">Bulk Upload</h3>
+        <p class="text-muted">Upload multiple medicines using Excel or CSV files.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 p-4 h-100">
+                <div class="d-flex flex-column align-items-center text-center">
+                    <div class="template-icon mb-3">
+                        <i class="fa-solid fa-file-csv"></i>
+                    </div>
+                    <h5 class="fw-bold mb-2">Download Template</h5>
+                    <p class="text-muted small mb-4">Download our template to ensure your data is formatted correctly.
+                    </p>
+                    <button class="btn btn-outline-primary px-4 py-2 w-100" (click)="downloadTemplate()">
+                        <i class="fa-solid fa-download me-2"></i>
+                        Download CSV Template
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0 p-4 h-100">
+                <div class="upload-zone" (dragover)="onDragOver($event)" (drop)="onFileDropped($event)">
+                    <input type="file" id="fileInput" class="d-none" (change)="onFileSelected($event)"
+                        accept=".csv, .xlsx, .xls">
+                    <label for="fileInput"
+                        class="w-100 h-100 cursor-pointer d-flex flex-column align-items-center justify-content-center py-5">
+                        <div class="upload-icon mb-3">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2">Click to Upload or drag and drop</h5>
+                        <p class="text-muted small">CSV or Excel (XLSX, XLS)</p>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="top-bar d-flex align-items-center justify-content-between px-4 py-3">
+    <div class="d-flex align-items-center">
+        <!-- Mobile Toggle Button -->
+        <button class="btn menu-toggle-btn d-lg-none me-3" (click)="toggleMobileMenu()">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+
+        <div>
+            <h4 class="mb-0 fw-bold welcome-text d-none d-sm-block">Welcome back, Admin User</h4>
+            <h5 class="mb-0 fw-bold welcome-text d-sm-none">Welcome back</h5>
+            <span class="text-muted small date-text">{{ currentDate | date:'EEEE, MMMM d, y' }}</span>
+        </div>
+    </div>
+
+    <div class="d-flex align-items-center gap-2 gap-md-3">
+        <div class="status-indicator d-none d-md-flex align-items-center px-4 py-2">
+            <i class="fa-solid fa-wifi me-2 text-success small"></i>
+            <span class="small fw-semibold text-success">Online</span>
+        </div>
+
+        <div class="user-profile d-flex align-items-center px-2 px-md-3 py-1">
+            <div class="user-avatar-bg me-0 me-md-3">
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <div class="lh-1 d-none d-md-block">
+                <div class="profile-name fw-bold small">Admin User</div>
+                <span class="profile-role text-muted extra-small">Admin</span>
+            </div>
+        </div>
+
+        <button class="btn logout-btn px-2 px-md-4" (click)="onLogout()">
+            <i class="fa-solid fa-arrow-right-from-bracket me-md-2"></i>
+            <span class="d-none d-md-inline">Logout</span>
+        </button>
+    </div>
+</div>
